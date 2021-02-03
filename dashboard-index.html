@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2019 Grand Prix</title>
+  <link rel="stylesheet" type="text/css" href="../static/docs/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../static/docs/css/style.css">
+  <link href="../static/images/f1-logo-red.ico" rel="shortcut icon" type="image/x-icon" sizes="16x16"/>
+  <script src="../static/graphdocs/c3.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <link rel="stylesheet" href="../static/graphdocs/c3.css">
+  <script src="../static/graphdocs/c3.js"></script>
+</head>
+<style>
+    .topThree {
+      position: relative;
+      width: 50%;
+    }
+    .image {
+      display: block;
+      width: 200px;
+      height: auto;
+    }
+    .overlay {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+      width: 100%;
+      opacity: 0;
+      transition: .5s ease;
+      background-color: rgb(221, 8, 8);
+    }
+    .topThree:hover .overlay {
+      opacity: 0.6;
+    }
+    .text {
+      color: white;
+      font-size: 10px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+    /* body {
+      background-image: url('../static/images/formula1background.jpg');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+    } */
+    body {
+      background-image: url('../static/images/f1-logo-red.png');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: auto;
+      background-position: center;
+    }
+  </style>
+
+<body>
+  <script>
+      var circuit_name = JSON.parse('{{data | tojson}}');
+  </script>
+
+<h1>
+  <img src="../static/images/f1-logo-red.png" width="95" height="60" style="width: 5%; float: left"/>
+
+  <button type="button" style="float:right" onclick="backToMap()">Back to Map</button>
+</h1>
+<h1 id="circuitName_display">{Grand Prix} - 2019 Results<h1>
+<h2 id="teamName_display">{Team Name} </h2>
+<!-- <h2 id="teamLogo_display">{Team Logo} </h2> -->
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-2">
+        <div class="well">
+          <h5>Team:</h5>
+          <select id="selDataset" onchange="optionChanged(this.value)">
+            <option selected="selected">Choose A Team</option>
+            <option value="Mercedes">Mercedes-Benz</option>
+            <option value="Ferrari">Ferrari</option>
+            <option value="RedBull">Red Bull Racing</option>
+            <option value="Mclaren">McLaren</option>
+            <option value="Renault">Renault</option>
+            <option value="ToroRosso">Toro Rosso</option>
+            <option value="RacingPoint">Racing Point</option>
+            <option value="AlfaRomeo">Alfa Romeo</option>
+            <option value="Haas">Haas</option>
+            <option value="Williams">Williams</option>
+          </select>
+          <div id="pie_chart" style="float:right"></div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <br>
+      </div>
+      <div class="col-sm-8" align="center">
+        <h5 id="driver1_name_display" style="width: 50%; float:left">
+          {Driver 1}
+        </h5>
+        <h5 id="driver2_name_display" style="width: 50%; float:right">
+         {Driver 2}
+        </h5>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div id="chart" style="width: 50%; float:left">
+          This is where the gauge for Driver 1 will go.
+       </div>
+
+       <div id="chart2" style="width: 50%; float:right">
+          This is where the gauge for Driver 2 will go.
+       </div>
+        <br>
+        <br>
+        <br>
+        <br>
+      </div>
+
+      <div class="col-sm-2" align="left">
+        <h5>Top 3 Finishers</h5>
+        <div class="topThree">
+          <img src="../static/images/top3/Hamilton.jpeg" alt="Lewis Hamilton" class="image">
+          <div class="overlay">
+            <div class="text">Lewis Hamilton - Mercedes</div>
+          </div>
+        </div>
+        <div class="topThree">
+          <img src="../static/images/top3/Bottas.jpeg" alt="Valterri Bottas" class="image">
+          <div class="overlay">
+            <div class="text">Valterri Botas - Mercedes</div>
+          </div>
+        </div>
+        <div class="topThree">
+          <img src="../static/images/top3/Verstappen.jpeg" alt="Max Verstappen" class="image">
+          <div class="overlay">
+            <div class="text">Max Verstappen - Red Bull</div>
+          </div>
+        </div>
+        <h5>4th - 10th</h5>
+        <table border="1" class="dataframe">
+          <thead>
+            <tr style="text-align: left;">
+              <th>Pos.</th>
+              <th>Driver</th>
+              <th>Constructor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>4</td>
+              <td>Charles Leclerc</td>
+              <td>Ferrari</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>Sebastian Vettel</td>
+              <td>Ferrari</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>Carlos Sainz, Jr.</td>
+              <td>McLaren</td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td>Pierre Gasly</td>
+              <td>Toro Rosso</td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td>Alex Albon</td>
+              <td>McLaren-Renault</td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td>Daniel Ricciardo</td>
+              <td>Renault</td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td>Sergio Perez</td>
+              <td>Racing Point</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row">
+      <div id="linechart">
+      </div>
+    </div>
+  </div>
+
+
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script type="text/javascript" src="../static/graphdocs/gauge.js"></script>
+  <script type="text/javascript" src="../static/graphdocs/linechart.js"></script>
+  <script type="text/javascript" src="../static/docs/js/app.js"></script>
+  <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.4/raphael-min.js"></script> -->
+</body>
+
+<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/justgage/1.2.9/justgage.min.js"></script> -->
+<!-- <script type="text/javascript" src="../static/graphdocs/gauge.js"></script> -->
+<!--<script src="../static/graphdocs/needle.js" type="text/javascript"></script>-->
+<!-- <script src="../static/graphdocs/linechart.js" type="text/javascript"></script> -->
+</html>
