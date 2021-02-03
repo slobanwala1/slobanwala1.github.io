@@ -1,0 +1,69 @@
+h1 {
+    /* Put a 15-pixel margin at the bottom of the heading. */
+    margin-bottom: 15px;
+    /* Change the size of your font to 60 pixels high. */
+    font-size: 55px;
+    /* This will color the heading font white. */
+    color: rgb(221, 8, 8);
+    /* Align the text to the center of its enclosing element (e.g. div). */
+    text-align: center;
+    /* The background of the heading element will now be black. */
+    background-color: white;
+
+    border-bottom: 5px solid rgb(221, 8, 8);
+  }
+
+  button {
+    background-color: rgb(221,8,8);
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border: 2px solid #000000;
+
+  }
+  button:hover {
+    background-color: rgb(175, 10, 10); /* Green */
+    color: white;
+  }
+
+h2 {
+    /* Put a 15-pixel margin at the top of all h2 headings. */
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 35px;
+    text-align: center;
+  }
+
+  h5{
+    border-bottom: 5px solid rgb(221, 8, 8);
+  }
+    #page-container {
+      position: relative;
+      min-height: 100vh;
+    }
+    #content-wrap {
+      padding-bottom: 2.5rem;    /* Footer height */
+    }
+    #footer {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 2.5rem;            /* Footer height */
+    }
+    tbody td{
+      padding: 0px;
+    }
+    tbody tr:nth-child(odd){
+      background-color: #c7cdd8;
+      color: rgb(0, 0, 0);
+    }
+  #pie_chart {
+      padding-top: 50px;
+      padding-right: 30px;
+      padding-bottom: 50px;
+      padding-left: 80px;
+  }
